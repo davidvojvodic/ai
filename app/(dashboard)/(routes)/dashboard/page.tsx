@@ -14,35 +14,35 @@ import { useRouter } from "next/navigation";
 
 const tools = [
   {
-    label: "Conversation",
+    label: "Pogovor",
     icon: MessageSquare,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
     href: "/conversation",
   },
   {
-    label: "Image Generation",
+    label: "Ustvarjanje slik",
     icon: ImageIcon,
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
     href: "/image",
   },
   {
-    label: "Video Generation",
+    label: "Ustvarjanje videa",
     icon: VideoIcon,
     color: "text-orange-700",
     bgColor: "bg-orange-700/10",
     href: "/video",
   },
   {
-    label: "Music Generation",
+    label: "Ustvarjanje glasbe",
     icon: Music,
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
     href: "/music",
   },
   {
-    label: "Code Generation",
+    label: "Ustvarjanje kode",
     icon: Code,
     color: "text-green-700",
     bgColor: "bg-green-700/10",
@@ -56,10 +56,10 @@ export default function DashboardPage() {
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
-          Explore the power of AI
+          Raziščite moč umetne inteligence
         </h2>
         <p className="text-muted-foreground font-ligh text-sm md:text-lg text-center">
-          Chat with the samrtest AI - Experience the power of AI
+          Klepetajte z najpametnejšim AI - Izkusite moč AI
         </p>
       </div>
       <div className="px-4 md:px-20 lg:px-32 space-y-4">

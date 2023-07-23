@@ -20,43 +20,43 @@ const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
 const routes = [
   {
-    label: "Dashboard",
+    label: "Nadzorna plošča",
     icon: LayoutDashboard,
     href: "/dashboard",
     color: "text-sky-500",
   },
   {
-    label: "Conversation",
+    label: "Pogovor",
     icon: MessageSquare,
     href: "/conversation",
     color: "text-violet-500",
   },
   {
-    label: "Image Generation",
+    label: "Ustvarjanje slik",
     icon: ImageIcon,
     href: "/image",
     color: "text-pink-700",
   },
   {
-    label: "Video Generation",
+    label: "Ustvarjanje videa",
     icon: VideoIcon,
     href: "/video",
     color: "text-orange-700",
   },
   {
-    label: "Music Generation",
+    label: "Ustvarjanje glasbe",
     icon: Music,
     href: "/music",
     color: "text-emerald-500",
   },
   {
-    label: "Code Generation",
+    label: "Ustvarjanje kode",
     icon: Code,
     href: "/code",
     color: "text-green-700",
   },
   {
-    label: "Settings",
+    label: "Nastavitve",
     icon: Settings,
     href: "/settings",
   },
