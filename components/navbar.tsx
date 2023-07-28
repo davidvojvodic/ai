@@ -3,13 +3,18 @@ import { Menu } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import MobileSidebar from "./mobile-sidebar";
 import { getApiLimit } from "@/lib/api-limit";
+import { boolean } from "zod";
 
-const Navbar = async () => {
+interface NavbarProps {
+  isPro: boolean;
+}
+
+const Navbar = async ({ isPro = false }: NavbarProps) => {
   const apiLimitCount = await getApiLimit();
 
   return (
     <div className="flex items-center p-4">
-      <MobileSidebar apiLimitCount={apiLimitCount} />
+      <MobileSidebar isPro={isPro} apiLimitCount={apiLimitCount} />
       <div className="flex w-full justify-end">
         <UserButton afterSignOutUrl="/" />
       </div>
