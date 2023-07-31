@@ -13,7 +13,7 @@ const Navbar = async ({ isPro = false }: NavbarProps) => {
   const apiLimitCount = await getApiLimit();
 
   return (
-    <div className="flex items-center p-4">
+    <div className="flex bg-[#060e0e] items-center p-4">
       <MobileSidebar isPro={isPro} apiLimitCount={apiLimitCount} />
       <div className="flex w-full justify-end">
         <UserButton afterSignOutUrl="/" />

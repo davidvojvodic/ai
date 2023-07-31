@@ -7,13 +7,17 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard,
   MessageSquare,
   ImageIcon,
   VideoIcon,
   Music,
   Code,
   Settings,
+  Home,
+  MessagesSquare,
+  Camera,
+  Film,
+  Code2,
 } from "lucide-react";
 import { FreeCounter } from "./free-counter";
 
@@ -22,25 +26,25 @@ const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 const routes = [
   {
     label: "Nadzorna plošča",
-    icon: LayoutDashboard,
+    icon: Home,
     href: "/dashboard",
     color: "text-sky-500",
   },
   {
     label: "Pogovor",
-    icon: MessageSquare,
+    icon: MessagesSquare,
     href: "/conversation",
     color: "text-violet-500",
   },
   {
     label: "Ustvarjanje slik",
-    icon: ImageIcon,
+    icon: Camera,
     href: "/image",
     color: "text-pink-700",
   },
   {
     label: "Ustvarjanje videa",
-    icon: VideoIcon,
+    icon: Film,
     href: "/video",
     color: "text-orange-700",
   },
@@ -52,7 +56,7 @@ const routes = [
   },
   {
     label: "Ustvarjanje kode",
-    icon: Code,
+    icon: Code2,
     href: "/code",
     color: "text-green-700",
   },
@@ -71,30 +75,35 @@ interface SidebarProps {
 const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
-      <div className="px-3 py-2 flex-1">
+    <div className="space-y-4 p-5 border-r-2 border-[#2f3838] flex flex-col h-full bg-[#1a1f1f] text-white">
+      <div className="px-3 py-2 mt-5 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
-          <div className="relative w-8 h-8 mr-4">
-            <Image fill alt="logo" src="/logo.png" />
+          <div className="relative w-10 h-10 mr-4">
+            <Image fill alt="logo" src="/logo1.png" />
           </div>
           <h1 className={cn("text-2xl font-bold", montserrat.className)}>
             AI Platform
           </h1>
         </Link>
-        <div className="space-y-1">
+        <div className="space-y-4">
           {routes.map((route) => (
             <Link
               href={route.href}
               key={route.href}
               className={cn(
-                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                "text-md group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
                 pathname === route.href
-                  ? "bg-white/10 text-white"
+                  ? "bg-white/10 text-[#36bcba]"
                   : "text-zinc-400"
               )}
             >
               <div className="flex items-center flex-1">
-                <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
+                <route.icon
+                  className={cn(
+                    "h-7 w-7 mr-3",
+                    pathname === route.href ? "text-[#36bcba]" : route.color
+                  )}
+                />
                 {route.label}
               </div>
             </Link>

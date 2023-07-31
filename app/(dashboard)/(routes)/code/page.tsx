@@ -20,6 +20,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 import ReactMarkdown from "react-markdown";
 import { useProModal } from "@/hooks/use-pro-modal";
+import { toast } from "react-hot-toast";
 
 const CodePage = () => {
   const proModal = useProModal();
@@ -55,6 +56,8 @@ const CodePage = () => {
       // open pro modal
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Nekaj je šlo narobe");
       }
       console.log(error);
     } finally {
