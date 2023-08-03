@@ -28,7 +28,7 @@ export const SubButton = ({ isPro = false }: SubButtonProps) => {
   return (
     <Button
       disabled={loading}
-      variant={isPro ? "default" : "premium"}
+      variant={isPro ? "default" : "novi"}
       onClick={onClick}
     >
       {isPro ? "Upravljaj naročnino" : "Nadgradi"}

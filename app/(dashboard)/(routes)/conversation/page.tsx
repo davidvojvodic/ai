@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import Heading from "@/components/heading";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, MessagesSquare } from "lucide-react";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -64,20 +64,20 @@ const ConversationPage = () => {
   };
 
   return (
-    <div>
+    <div className="h-fit bg-[#060e0e]">
       <Heading
         title="Pogovor"
         description="Naš najnaprednejši model pogovora."
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        icon={MessagesSquare}
+        iconColor="text-[#36bcba]"
+        bgColor="bg-white/10"
       />
       <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+              className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               <FormField
                 name="prompt"
@@ -88,14 +88,14 @@ const ConversationPage = () => {
                         {...field}
                         disabled={isLoading}
                         placeholder="Vprašaj me karkoli"
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-transparent"
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-[#36bcba] hover:bg-[#298e8d]"
                 disabled={isLoading}
               >
                 Ustvari
@@ -105,19 +105,19 @@ const ConversationPage = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full h-full flex items-center justify-center bg-muted">
               <Loader />
             </div>
           )}
           {messages.length === 0 && !isLoading && (
             <Empty label="Ni pogovorov" />
           )}
-          <div className="flex flex-col-reverse gap-y-4">
+          <div className="flex flex-col-reverse gap-4">
             {messages.map((message) => (
               <div
                 key={message.content}
                 className={cn(
-                  "p-8 w-full flex items-center gap-x-8 rounded-lg",
+                  "p-8 w-full flex items-center mt-3 gap-8 rounded-lg",
                   message.role === "user"
                     ? "bg-white border border-black/10"
                     : "bg-muted"

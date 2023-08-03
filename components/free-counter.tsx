@@ -33,9 +33,9 @@ export const FreeCounter = ({
   }
 
   return (
-    <div className="px-3">
+    <div className="px-2 xl:px-3">
       <Card className="bg-white/10 border-0">
-        <CardContent className="py-6">
+        <CardContent className="py-3 2xl:py-6">
           <div className="text-center text-sm text-white mb-4 space-y-2">
             <p>
               {apiLimitCount} / {MAX_FREE_COUNTS} Uporabljenih žetonov
@@ -45,11 +45,7 @@ export const FreeCounter = ({
               value={(apiLimitCount / MAX_FREE_COUNTS) * 100}
             />
           </div>
-          <Button
-            onClick={proModal.onOpen}
-            variant="premium"
-            className="w-full"
-          >
+          <Button onClick={proModal.onOpen} variant="novi" className="w-full">
             Nadgradi
             <Zap className="w-4 h-4 ml-2 fill-white" />
           </Button>

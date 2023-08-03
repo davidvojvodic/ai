@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import Heading from "@/components/heading";
-import { Download, ImageIcon } from "lucide-react";
+import { Camera, Download, ImageIcon } from "lucide-react";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -67,20 +67,20 @@ const ImagePage = () => {
   };
 
   return (
-    <div>
+    <div className="h-fit bg-[#060e0e]">
       <Heading
         title="Ustvarjanje slik"
         description="Spremenite svoje besedilo v sliko."
-        icon={ImageIcon}
-        iconColor="text-pink-700"
-        bgColor="bg-pink-700/10"
+        icon={Camera}
+        iconColor="text-[#36bcba]"
+        bgColor="bg-white/10"
       />
       <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+              className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               <FormField
                 name="prompt"
@@ -91,7 +91,7 @@ const ImagePage = () => {
                         {...field}
                         disabled={isLoading}
                         placeholder="Fotografija pingvina na Antarktiki"
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-transparent"
                       />
                     </FormControl>
                   </FormItem>
@@ -152,7 +152,7 @@ const ImagePage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-[#36bcba] hover:bg-[#298e8d]"
                 disabled={isLoading}
               >
                 Ustvari

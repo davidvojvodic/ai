@@ -88,7 +88,7 @@ export const ProModal = () => {
           <DialogTitle className="flex justify-center items-center flex-col gap-y-4 pb-2">
             <div className="flex items-center gap-x-2 py-2">
               Nadgradnja umetne inteligence
-              <Badge variant="premium" className="uppercase text-sm py-1">
+              <Badge variant="novi" className="uppercase text-sm py-1">
                 pro
               </Badge>
             </div>
@@ -105,7 +105,7 @@ export const ProModal = () => {
                   </div>
                   <div className="font-semibold text-sm">{tool.label}</div>
                 </div>
-                <Check className="text-primary w-5 h-5" />
+                <Check className="text-[#36bcba] w-5 h-5" />
               </Card>
             ))}
           </DialogDescription>
@@ -115,7 +115,7 @@ export const ProModal = () => {
             disabled={loading}
             onClick={onSubscribe}
             size="lg"
-            variant="premium"
+            variant="novi"
             className="w-full"
           >
             Nadgradnja

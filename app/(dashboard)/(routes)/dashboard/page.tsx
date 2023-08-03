@@ -88,7 +88,7 @@ const tools = [
 export default function DashboardPage() {
   const router = useRouter();
   return (
-    <div>
+    <div className="h-fit bg-[#060e0e] pb-10">
       <div className="mb-8 px-10 space-y-4">
         <h2 className="text-2xl text-white md:text-4xl font-bold">
           Raziščite moč umetne inteligence
@@ -97,12 +97,12 @@ export default function DashboardPage() {
           Klepetajte z najpametnejšim AI - Izkusite moč AI
         </p>
       </div>
-      <div className="flex flex-wrap items-center justify-center md:justify-start  px-4 md:px-10 lg:px-10 gap-6">
+      <div className="flex flex-wrap h-full items-center justify-center md:justify-start  px-4 md:px-10 lg:px-10 gap-6">
         {tools.map((tool) => (
           <Card
             onClick={() => router.push(tool.href)}
             key={tool.href}
-            className="p-4 w-72 h-[300px] border-2 border-[#2f3838] bg-[#1a1f1f] text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
+            className="p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-[#1a1f1f] text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
           >
             <div className="flex items-center justify-between w-full gap-x-4">
               <div className="flex items-center">
@@ -121,7 +121,7 @@ export default function DashboardPage() {
             <div className="mt-3">
               <h1 className="font-semibold">Namigi:</h1>
             </div>
-            <div className="text-transparent text-xl mt-4 h-[100px] bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            <div className="text-transparent text-base 2xl:text-xl mt-4 h-[100px] bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
               <TypewriterComponent
                 options={{
                   strings: tool.options,

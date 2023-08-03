@@ -54,20 +54,20 @@ const MusicPage = () => {
   };
 
   return (
-    <div>
+    <div className="h-fit bg-[#060e0e]">
       <Heading
         title="Ustvarjanje glasbe"
         description="Spremenite svoje besedilo v glasbo."
         icon={Music}
-        iconColor="text-emerald-500"
-        bgColor="bg-emerald-500/10"
+        iconColor="text-[#36bcba]"
+        bgColor="bg-white/10"
       />
       <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+              className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               <FormField
                 name="prompt"
@@ -78,14 +78,14 @@ const MusicPage = () => {
                         {...field}
                         disabled={isLoading}
                         placeholder="Solo na kitari"
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-transparent"
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="col-span-12 lg:col-span-2 w-full bg-[#36bcba] hover:bg-[#298e8d]"
                 disabled={isLoading}
               >
                 Ustvari
@@ -95,7 +95,7 @@ const MusicPage = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full h-full flex items-center justify-center bg-muted">
               <Loader />
             </div>
           )}
