@@ -97,7 +97,7 @@ export default function DashboardPage() {
           Klepetajte z najpametnejšim AI - Izkusite moč AI
         </p>
       </div>
-      <div className="flex flex-wrap items-center justify-center px-4 md:px-10 lg:px-10 gap-6">
+      <div className="flex flex-wrap items-center justify-center md:justify-start  px-4 md:px-10 lg:px-10 gap-6">
         {tools.map((tool) => (
           <Card
             onClick={() => router.push(tool.href)}
