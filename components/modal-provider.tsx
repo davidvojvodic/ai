@@ -1,8 +1,10 @@
 "use client";
 
+// Import necessary modules
 import { useEffect, useState } from "react";
 import { ProModal } from "./pro-modal";
 
+// ModalProvider component definition
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -16,6 +18,7 @@ export const ModalProvider = () => {
 
   return (
     <>
+      {/* ProModal component is rendered */}
       <ProModal />
     </>
   );

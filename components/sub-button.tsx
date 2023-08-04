@@ -1,11 +1,13 @@
 "use client";
 
+// Import necessary modules
 import { Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
+// SubButton component definition
 interface SubButtonProps {
   isPro: boolean;
 }
@@ -25,7 +27,9 @@ export const SubButton = ({ isPro = false }: SubButtonProps) => {
       setLoading(false);
     }
   };
+
   return (
+    // Button component to manage subscription or upgrade
     <Button
       disabled={loading}
       variant={isPro ? "default" : "novi"}

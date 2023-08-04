@@ -1,5 +1,5 @@
 "use client";
-
+// Import necessary modules and components
 import * as z from "zod";
 import Heading from "@/components/heading";
 import { Code } from "lucide-react";
@@ -22,11 +22,14 @@ import ReactMarkdown from "react-markdown";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { toast } from "react-hot-toast";
 
+// Define the CodePage component
 const CodePage = () => {
+  // Initialize hooks and state variables
   const proModal = useProModal();
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
+  // Set up the react-hook-form with zod validation and default values
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,24 +39,30 @@ const CodePage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
+  // Handle form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // Create a user message to be sent to the AI service
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt,
       };
 
+      // Append the user message to the existing messages array
       const newMessages = [...messages, userMessage];
 
+      // Send the messages array to the AI service using Axios
       const response = await axios.post("/api/code", {
         messages: newMessages,
       });
 
+      // Update the messages state with the response from the AI service
       setMessages((current) => [...current, userMessage, response.data]);
 
+      // Reset the form after successful submission
       form.reset();
     } catch (error: any) {
-      // open pro modal
+      // Handle errors, potentially show pro modal for non-pro users
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {
@@ -61,12 +70,15 @@ const CodePage = () => {
       }
       console.log(error);
     } finally {
+      // Refresh the page after form submission
       router.refresh();
     }
   };
 
+  // Render the CodePage component
   return (
     <div className="h-fit bg-[#060e0e] pb-5">
+      {/* Render the heading section */}
       <Heading
         title="Ustvarjanje kode"
         description="Ustvarite kodo z uporabo besedila."
@@ -76,6 +88,7 @@ const CodePage = () => {
       />
       <div className="px-4 lg:px-8">
         <div>
+          {/* Render the form with input field and submit button */}
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -106,14 +119,19 @@ const CodePage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
+          {/* Render the loading spinner if form is submitting */}
           {isLoading && (
             <div className="p-8 rounded-lg w-full h-full flex items-center justify-center bg-muted">
               <Loader />
             </div>
           )}
+
+          {/* Render the "Empty" component if there are no messages */}
           {messages.length === 0 && !isLoading && (
             <Empty label="Ni pogovorov" />
           )}
+
+          {/* Render the messages */}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
               <div
@@ -127,6 +145,7 @@ const CodePage = () => {
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
 
+                {/* Render the ReactMarkdown component to display the message content */}
                 <ReactMarkdown
                   components={{
                     pre: ({ node, ...props }) => (
@@ -151,4 +170,5 @@ const CodePage = () => {
   );
 };
 
+// Export the CodePage component as the default export
 export default CodePage;

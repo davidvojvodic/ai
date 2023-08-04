@@ -1,5 +1,6 @@
 "use client";
 
+// Import necessary modules
 import { useProModal } from "@/hooks/use-pro-modal";
 import {
   Dialog,
@@ -26,6 +27,7 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
+// Define the tools array with different options for each tool
 const tools = [
   {
     label: "Pogovor",
@@ -64,6 +66,7 @@ const tools = [
   },
 ];
 
+// ProModal component definition
 export const ProModal = () => {
   const proModal = useProModal();
   const [loading, setLoading] = useState(false);
@@ -82,10 +85,12 @@ export const ProModal = () => {
   };
 
   return (
+    // Dialog component for the pro upgrade modal
     <Dialog onOpenChange={proModal.onClose} open={proModal.isOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex justify-center items-center flex-col gap-y-4 pb-2">
+            {/* Pro upgrade title with a "pro" badge */}
             <div className="flex items-center gap-x-2 py-2">
               Nadgradnja umetne inteligence
               <Badge variant="novi" className="uppercase text-sm py-1">
@@ -94,6 +99,7 @@ export const ProModal = () => {
             </div>
           </DialogTitle>
           <DialogDescription className="text-center pt-2 space-y-2 text-zinc-900 font-medium">
+            {/* Tool cards with icons and labels */}
             {tools.map((tool) => (
               <Card
                 key={tool.label}
@@ -111,6 +117,7 @@ export const ProModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
+          {/* Button for pro upgrade with a loading state */}
           <Button
             disabled={loading}
             onClick={onSubscribe}

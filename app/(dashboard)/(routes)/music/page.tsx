@@ -1,5 +1,5 @@
 "use client";
-
+// Import necessary components, icons, and utilities
 import * as z from "zod";
 import Heading from "@/components/heading";
 import { Music } from "lucide-react";
@@ -18,10 +18,14 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { toast } from "react-hot-toast";
 
 const MusicPage = () => {
+  // Initialize the pro modal and router
   const proModal = useProModal();
   const router = useRouter();
+
+  // State to manage the audio URL for the created music
   const [music, setMusic] = useState<string>();
 
+  // Initialize the form using react-hook-form and zod validation schema
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -29,27 +33,33 @@ const MusicPage = () => {
     },
   });
 
+  // Check if the form is submitting to show the loader
   const isLoading = form.formState.isSubmitting;
 
+  // Handler for form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // Clear the music URL before fetching new music
       setMusic(undefined);
 
+      // Send a POST request to the server with form data
       const response = await axios.post("/api/music", values);
 
+      // Update the music state with the new audio URL
       setMusic(response.data.audio);
 
+      // Reset the form after successful submission
       form.reset();
     } catch (error: any) {
-      // open pro modal
+      // If there is an error, handle it accordingly
       if (error?.response?.status === 403) {
-        proModal.onOpen();
+        proModal.onOpen(); // Open pro modal if there is a 403 error
       } else {
-        toast.error("Nekaj je šlo narobe");
+        toast.error("Nekaj je šlo narobe"); // Show a toast error for other errors
       }
       console.log(error);
     } finally {
-      router.refresh();
+      router.refresh(); // Refresh the page after form submission (clears the form)
     }
   };
 
@@ -65,10 +75,12 @@ const MusicPage = () => {
       <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
+            {/* Form to input the prompt for creating music */}
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
+              {/* Input field for the prompt */}
               <FormField
                 name="prompt"
                 render={({ field }) => (
@@ -84,6 +96,7 @@ const MusicPage = () => {
                   </FormItem>
                 )}
               />
+              {/* Submit button */}
               <Button
                 className="col-span-12 lg:col-span-2 w-full bg-[#36bcba] hover:bg-[#298e8d]"
                 disabled={isLoading}
@@ -94,12 +107,15 @@ const MusicPage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
+          {/* Display the loader when submitting the form */}
           {isLoading && (
             <div className="p-8 rounded-lg w-full h-full flex items-center justify-center bg-muted">
               <Loader />
             </div>
           )}
+          {/* Display the empty state if no music is available */}
           {!music && !isLoading && <Empty label="Ni ustvarjene glasbe" />}
+          {/* Display the audio player with the created music */}
           {music && (
             <audio controls className="w-full mt-8">
               <source src={music} />

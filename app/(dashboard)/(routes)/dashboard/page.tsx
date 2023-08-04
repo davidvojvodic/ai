@@ -1,5 +1,6 @@
 "use client";
 
+// Import necessary components, icons, and utilities
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
@@ -17,7 +18,9 @@ import {
 import { useRouter } from "next/navigation";
 import TypewriterComponent from "typewriter-effect";
 
+// Data for different tools with their labels, icons, colors, backgrounds, hrefs, and options
 const tools = [
+  // Tool 1: Pogovor
   {
     label: "Pogovor",
     icon: MessagesSquare,
@@ -31,6 +34,7 @@ const tools = [
       "Napiši mi nekaj vicev, ki jih lahko uporabim na naslednjem druženju.",
     ],
   },
+  // Tool 2: Ustvarjanje slik
   {
     label: "Ustvarjanje slik",
     icon: Camera,
@@ -44,6 +48,7 @@ const tools = [
       "Prikaži sproščujoč prizor ob obali z valovi.",
     ],
   },
+  // Tool 3: Ustvarjanje videa
   {
     label: "Ustvarjanje videa",
     icon: Film,
@@ -57,6 +62,7 @@ const tools = [
       "Ustvari video množice ptic, ki vzletijo s polja. ",
     ],
   },
+  // Tool 4: Ustvarjanje glasbe
   {
     label: "Ustvarjanje glasbe",
     icon: Music,
@@ -70,6 +76,7 @@ const tools = [
       "Predstavljaj si glasbeno ozadje za hitro vožnjo skozi mesto ponoči.",
     ],
   },
+  // Tool 5: Ustvarjanje kode
   {
     label: "Ustvarjanje kode",
     icon: Code2,
@@ -86,10 +93,13 @@ const tools = [
 ];
 
 export default function DashboardPage() {
+  // Initialize the router
   const router = useRouter();
+
   return (
     <div className="h-fit bg-[#060e0e] pb-10">
       <div className="mb-8 px-10 space-y-4">
+        {/* Heading and description */}
         <h2 className="text-2xl text-white md:text-4xl font-bold">
           Raziščite moč umetne inteligence
         </h2>
@@ -98,8 +108,10 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="flex flex-wrap h-full items-center justify-center md:justify-start  px-4 md:px-10 lg:px-10 gap-6">
+        {/* Render each tool as a Card */}
         {tools.map((tool) => (
           <Card
+            // On click, navigate to the corresponding href
             onClick={() => router.push(tool.href)}
             key={tool.href}
             className="p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-[#1a1f1f] text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
@@ -107,6 +119,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between w-full gap-x-4">
               <div className="flex items-center">
                 <div
+                  // Icon with its color and background color
                   className={cn(
                     "p-2 flex items-center justify-center rounded-md w-fit",
                     tool.bgColor
@@ -122,6 +135,7 @@ export default function DashboardPage() {
               <h1 className="font-semibold">Namigi:</h1>
             </div>
             <div className="text-transparent text-base 2xl:text-xl mt-4 h-[100px] bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+              {/* Typewriter effect to display options */}
               <TypewriterComponent
                 options={{
                   strings: tool.options,

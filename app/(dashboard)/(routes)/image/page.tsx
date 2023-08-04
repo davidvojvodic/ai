@@ -1,5 +1,5 @@
 "use client";
-
+// Import necessary components, icons, and utilities
 import * as z from "zod";
 import Heading from "@/components/heading";
 import { Camera, Download, ImageIcon } from "lucide-react";
@@ -28,10 +28,14 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { toast } from "react-hot-toast";
 
 const ImagePage = () => {
+  // Initialize the pro modal and router
   const proModal = useProModal();
   const router = useRouter();
+
+  // State to manage the list of images
   const [images, setImages] = useState<string[]>([]);
 
+  // Initialize the form using react-hook-form and zod validation schema
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,28 +45,34 @@ const ImagePage = () => {
     },
   });
 
+  // Check if the form is submitting to show the loader
   const isLoading = form.formState.isSubmitting;
 
+  // Handler for form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // Clear the images array before fetching new images
       setImages([]);
 
+      // Send a POST request to the server with form data
       const response = await axios.post("/api/image", values);
 
+      // Extract URLs from the response data
       const urls = response.data.map((image: { url: string }) => image.url);
 
+      // Update the images state with the new URLs
       setImages(urls);
       form.reset();
     } catch (error: any) {
-      // open pro modal
+      // If there is an error, handle it accordingly
       if (error?.response?.status === 403) {
-        proModal.onOpen();
+        proModal.onOpen(); // Open pro modal if there is a 403 error
       } else {
-        toast.error("Nekaj je šlo narobe");
+        toast.error("Nekaj je šlo narobe"); // Show a toast error for other errors
       }
       console.log(error);
     } finally {
-      router.refresh();
+      router.refresh(); // Refresh the page after form submission (clears the form)
     }
   };
 
@@ -78,10 +88,12 @@ const ImagePage = () => {
       <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
+            {/* Form to input the prompt, amount, and resolution */}
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
+              {/* Input field for the prompt */}
               <FormField
                 name="prompt"
                 render={({ field }) => (
@@ -97,6 +109,7 @@ const ImagePage = () => {
                   </FormItem>
                 )}
               />
+              {/* Select field for the amount */}
               <FormField
                 name="amount"
                 control={form.control}
@@ -124,6 +137,7 @@ const ImagePage = () => {
                   </FormItem>
                 )}
               />
+              {/* Select field for the resolution */}
               <FormField
                 name="resolution"
                 control={form.control}
@@ -151,6 +165,7 @@ const ImagePage = () => {
                   </FormItem>
                 )}
               />
+              {/* Submit button */}
               <Button
                 className="col-span-12 lg:col-span-2 w-full bg-[#36bcba] hover:bg-[#298e8d]"
                 disabled={isLoading}
@@ -161,20 +176,25 @@ const ImagePage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
+          {/* Display the loader when submitting the form */}
           {isLoading && (
             <div className="p-20">
               <Loader />
             </div>
           )}
+          {/* Display the empty state if no images are available */}
           {images.length === 0 && !isLoading && (
             <Empty label="Ni ustvarjenih slik." />
           )}
+          {/* Display the images */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
             {images.map((src) => (
               <Card key={src} className="rounded-lg overflow-hidden">
                 <div className="relative aspect-square">
+                  {/* Show the image using the Next.js Image component */}
                   <Image src={src} alt="Image" fill />
                 </div>
+                {/* Card footer with the download button */}
                 <CardFooter className="p-2">
                   <Button
                     onClick={() => window.open(src)}

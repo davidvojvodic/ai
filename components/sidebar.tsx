@@ -1,5 +1,6 @@
 "use client";
 
+// Import necessary modules
 import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
@@ -7,11 +8,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import {
-  MessageSquare,
-  ImageIcon,
-  VideoIcon,
   Music,
-  Code,
   Settings,
   Home,
   MessagesSquare,
@@ -21,8 +18,10 @@ import {
 } from "lucide-react";
 import { FreeCounter } from "./free-counter";
 
+// Define the Montserrat font with specific weight and subsets
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
+// Define the routes array with different options for each route
 const routes = [
   {
     label: "Nadzorna plošča",
@@ -67,6 +66,7 @@ const routes = [
   },
 ];
 
+// Sidebar component definition
 interface SidebarProps {
   apiLimitCount?: number;
   isPro: boolean;
@@ -74,9 +74,12 @@ interface SidebarProps {
 
 const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
+
   return (
+    // Sidebar container with navigation links and logo
     <div className="space-y-4 p-3 xl:p-5 border-r-2 rounded-r-3xl border-[#2f3838] flex flex-col h-full bg-[#1a1f1f] text-white">
       <div className="px-3 py-2 mt-5 flex-1">
+        {/* Logo and platform name */}
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-7 h-7 lg:w-10 lg:h-10 mr-4">
             <Image fill alt="logo" src="/logo1.png" />
@@ -86,6 +89,7 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
           </h1>
         </Link>
         <div className="space-y-2 lg:space-y-4">
+          {/* Navigation links */}
           {routes.map((route) => (
             <Link
               href={route.href}
@@ -110,6 +114,7 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
           ))}
         </div>
       </div>
+      {/* FreeCounter component for displaying API usage */}
       <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );

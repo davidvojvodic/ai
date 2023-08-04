@@ -26,6 +26,7 @@ const ConversationPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
+  // Initialize the form and validation using zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,36 +36,43 @@ const ConversationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
+  // Handle form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // Prepare user's message for AI
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt,
       };
 
+      // Add user's message to the conversation
       const newMessages = [...messages, userMessage];
 
+      // Send user's message to the AI model via API
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
 
+      // Update the conversation with AI's response
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();
     } catch (error: any) {
-      // open pro modal
+      // Handle API errors and display pro modal if needed
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {
         toast.error("Nekaj je šlo narobe");
       }
     } finally {
+      // Refresh the page
       router.refresh();
     }
   };
 
   return (
     <div className="h-fit bg-[#060e0e]">
+      {/* Header */}
       <Heading
         title="Pogovor"
         description="Naš najnaprednejši model pogovora."
@@ -74,6 +82,7 @@ const ConversationPage = () => {
       />
       <div className="px-4 lg:px-8">
         <div>
+          {/* Form for user to input messages */}
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -88,7 +97,7 @@ const ConversationPage = () => {
                         {...field}
                         disabled={isLoading}
                         placeholder="Vprašaj me karkoli"
-                        className="border-0 outline-none bg-transparent focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 !border-transparent !outline-none bg-transparent !focus-visible:ring-0 !focus-visible:ring-transparent"
                       />
                     </FormControl>
                   </FormItem>
@@ -104,14 +113,17 @@ const ConversationPage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
+          {/* Loading state */}
           {isLoading && (
             <div className="p-8 rounded-lg w-full h-full flex items-center justify-center bg-muted">
               <Loader />
             </div>
           )}
+          {/* Empty conversation */}
           {messages.length === 0 && !isLoading && (
             <Empty label="Ni pogovorov" />
           )}
+          {/* Display conversation messages */}
           <div className="flex flex-col-reverse gap-4">
             {messages.map((message) => (
               <div
@@ -123,7 +135,9 @@ const ConversationPage = () => {
                     : "bg-muted"
                 )}
               >
+                {/* Render user or bot avatar based on the role */}
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {/* Render the content of the message */}
                 <p className="text-sm">{message.content}</p>
               </div>
             ))}
