@@ -26,7 +26,7 @@ export const checkSubscription = async () => {
             stripeSubscriptionId: true,
             stripeCurrentPeriodEnd: true,
             stripeCustomerId: true,
-            stripePrideId: true,
+            stripePriceId: true,
         }
     });
 
@@ -36,7 +36,7 @@ export const checkSubscription = async () => {
     }
 
     // Calculate if the subscription is still valid based on the "stripeCurrentPeriodEnd" timestamp
-    const isValid = userSubscription.stripePrideId &&
+    const isValid = userSubscription.stripePriceId &&
         userSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now();
 
     // Return the result (true if valid, false otherwise)
