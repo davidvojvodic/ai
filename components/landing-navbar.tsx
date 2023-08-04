@@ -20,7 +20,7 @@ const LandingNavbar = () => {
     <nav className="p-4 bg-transparent flex items-center justify-between">
       <Link href="/" className="flex items-center">
         <div className="relative h-8 w-8 mr-4">
-          <Image fill src="/logo.png" alt="Logo" />
+          <Image fill src="/logo1.png" alt="Logo" />
         </div>
         <h1 className={cn("text-2xl font-bold text-white", font.className)}>
           AI Platform
@@ -28,7 +28,7 @@ const LandingNavbar = () => {
       </Link>
       <div className="flex items-center gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button variant="outline" className="rounded-full">
+          <Button variant="default" className="rounded-full">
             Začnimo
           </Button>
         </Link>

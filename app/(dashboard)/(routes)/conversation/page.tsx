@@ -121,7 +121,7 @@ const ConversationPage = () => {
           )}
           {/* Empty conversation */}
           {messages.length === 0 && !isLoading && (
-            <Empty label="Ni pogovorov" />
+            <Empty img="/Laptop-2.png" label="Ni pogovorov" />
           )}
           {/* Display conversation messages */}
           <div className="flex flex-col-reverse gap-4">

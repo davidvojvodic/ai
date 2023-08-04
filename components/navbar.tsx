@@ -14,7 +14,7 @@ const Navbar = async ({ isPro = false }: NavbarProps) => {
   const apiLimitCount = await getApiLimit();
 
   return (
-    <div className="flex bg-[#060e0e] items-center p-4">
+    <div className="flex bg-[#f4f4f6] dark:bg-[#060e0e] items-center p-4">
       {/* MobileSidebar component with isPro and apiLimitCount props */}
       <MobileSidebar isPro={isPro} apiLimitCount={apiLimitCount} />
 

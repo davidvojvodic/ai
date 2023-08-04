@@ -111,7 +111,9 @@ const VideoPage = () => {
             </div>
           )}
           {/* Show an empty state message if no video is created */}
-          {!video && !isLoading && <Empty label="Ni ustvarjenega videa" />}
+          {!video && !isLoading && (
+            <Empty img="/girl_laptop-2.png" label="Ni ustvarjenega videa" />
+          )}
           {/* Display the video if it exists */}
           {video && (
             <video

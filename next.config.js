@@ -5,6 +5,7 @@ const nextConfig = {
             "oaidalleapiprodscus.blob.core.windows.net",
         ]
     }
-}
+};
 
 module.exports = nextConfig
+

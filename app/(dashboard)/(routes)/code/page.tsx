@@ -2,7 +2,7 @@
 // Import necessary modules and components
 import * as z from "zod";
 import Heading from "@/components/heading";
-import { Code } from "lucide-react";
+import { Code, Code2 } from "lucide-react";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -82,7 +82,7 @@ const CodePage = () => {
       <Heading
         title="Ustvarjanje kode"
         description="Ustvarite kodo z uporabo besedila."
-        icon={Code}
+        icon={Code2}
         iconColor="text-[#36bcba]"
         bgColor="bg-white/10"
       />
@@ -128,7 +128,7 @@ const CodePage = () => {
 
           {/* Render the "Empty" component if there are no messages */}
           {messages.length === 0 && !isLoading && (
-            <Empty label="Ni pogovorov" />
+            <Empty img="/Computer-2.png" label="Ni pogovorov" />
           )}
 
           {/* Render the messages */}

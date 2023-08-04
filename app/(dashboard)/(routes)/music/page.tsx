@@ -114,7 +114,9 @@ const MusicPage = () => {
             </div>
           )}
           {/* Display the empty state if no music is available */}
-          {!music && !isLoading && <Empty label="Ni ustvarjene glasbe" />}
+          {!music && !isLoading && (
+            <Empty img="/women_hand-2.png" label="Ni ustvarjene glasbe" />
+          )}
           {/* Display the audio player with the created music */}
           {music && (
             <audio controls className="w-full mt-8">

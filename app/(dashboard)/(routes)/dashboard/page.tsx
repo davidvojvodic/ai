@@ -97,10 +97,10 @@ export default function DashboardPage() {
   const router = useRouter();
 
   return (
-    <div className="h-fit bg-[#060e0e] pb-10">
+    <div className="h-fit bg-[#f4f4f6] dark:bg-[#060e0e] pb-10">
       <div className="mb-8 px-10 space-y-4">
         {/* Heading and description */}
-        <h2 className="text-2xl text-white md:text-4xl font-bold">
+        <h2 className="text-2xl text-black dark:text-white md:text-4xl font-bold">
           Raziščite moč umetne inteligence
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg">
@@ -114,7 +114,7 @@ export default function DashboardPage() {
             // On click, navigate to the corresponding href
             onClick={() => router.push(tool.href)}
             key={tool.href}
-            className="p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-[#1a1f1f] text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
+            className="p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-white text-black dark:bg-[#1a1f1f] dark:text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
           >
             <div className="flex items-center justify-between w-full gap-x-4">
               <div className="flex items-center">
