@@ -90,6 +90,13 @@ const tools = [
       "Izdelaj skripto, ki omogoča uporabnikom, da ocenjujejo in komentirajo objave.",
     ],
   },
+  {
+    label: "Restavriranje slik",
+    icon: ImageIcon,
+    href: "/image-restoration",
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
+  },
 ];
 
 export default function DashboardPage() {
@@ -134,7 +141,7 @@ export default function DashboardPage() {
             <div className="mt-3">
               <h1 className="font-semibold">Namigi:</h1>
             </div>
-            <div className="text-transparent text-base 2xl:text-xl mt-4 h-[100px] bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            <div className="text-transparent text-base 2xl:text-xl mt-4 h-[100px] bg-clip-text bg-gradient-to-r from-[#00ffeb] via-[#36bcba] to-[#254cad]">
               {/* Typewriter effect to display options */}
               <TypewriterComponent
                 options={{

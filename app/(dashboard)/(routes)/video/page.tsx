@@ -34,31 +34,31 @@ const VideoPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   // Function to handle form submission
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setVideo(undefined);
+  // const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  //   try {
+  //     setVideo(undefined);
 
-      // Send a POST request to the API endpoint to create the video
-      const response = await axios.post("/api/video", values);
+  //     // Send a POST request to the API endpoint to create the video
+  //     const response = await axios.post("/api/video", values);
 
-      // Set the video URL from the response to the state
-      setVideo(response.data[0]);
+  //     // Set the video URL from the response to the state
+  //     setVideo(response.data[0]);
 
-      // Reset the form after successful submission
-      form.reset();
-    } catch (error: any) {
-      // Open pro modal if the user is not on a PRO plan
-      if (error?.response?.status === 403) {
-        proModal.onOpen();
-      } else {
-        toast.error("Nekaj je šlo narobe");
-      }
-      console.log(error);
-    } finally {
-      // Refresh the page after form submission
-      router.refresh();
-    }
-  };
+  //     // Reset the form after successful submission
+  //     form.reset();
+  //   } catch (error: any) {
+  //     // Open pro modal if the user is not on a PRO plan
+  //     if (error?.response?.status === 403) {
+  //       proModal.onOpen();
+  //     } else {
+  //       toast.error("Nekaj je šlo narobe");
+  //     }
+  //     console.log(error);
+  //   } finally {
+  //     // Refresh the page after form submission
+  //     router.refresh();
+  //   }
+  // };
 
   return (
     <div className="h-fit bg-[#060e0e]">
@@ -74,7 +74,7 @@ const VideoPage = () => {
         <div>
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit(onSubmit)}
+              // onSubmit={form.handleSubmit(onSubmit)}
               className="rounded-lg border border-[#2f3838] w-full bg-white/10 text-white p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               {/* Form field for the text prompt */}

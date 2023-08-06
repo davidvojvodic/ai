@@ -43,18 +43,6 @@ const routes = [
     color: "text-pink-700",
   },
   {
-    label: "Ustvarjanje videa",
-    icon: Film,
-    href: "/video",
-    color: "text-orange-700",
-  },
-  {
-    label: "Ustvarjanje glasbe",
-    icon: Music,
-    href: "/music",
-    color: "text-emerald-500",
-  },
-  {
     label: "Ustvarjanje kode",
     icon: Code2,
     href: "/code",
@@ -66,6 +54,19 @@ const routes = [
     href: "/image-restoration",
     color: "text-pink-500",
   },
+  {
+    label: "Ustvarjanje videa",
+    icon: Film,
+    href: "/video",
+    color: "text-orange-700",
+  },
+  {
+    label: "Ustvarjanje glasbe",
+    icon: Music,
+    href: "/music",
+    color: "text-emerald-500",
+  },
+
   {
     label: "Nastavitve",
     icon: Settings,
