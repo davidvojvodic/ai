@@ -33,19 +33,24 @@ export default function ThemeContextProvider({
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme") as Theme | null;
+    // This will run when the component mounts and set the theme to dark
+    document.documentElement.classList.add("dark");
+  }, []); // Empty dependency array means this useEffect runs once when component mounts
 
-    if (localTheme) {
-      setTheme(localTheme);
+  // useEffect(() => {
+  //   const localTheme = window.localStorage.getItem("theme") as Theme | null;
 
-      if (localTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  //   if (localTheme) {
+  //     setTheme(localTheme);
+
+  //     if (localTheme === "dark") {
+  //       document.documentElement.classList.add("dark");
+  //     }
+  //   } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     setTheme("dark");
+  //     document.documentElement.classList.add("dark");
+  //   }
+  // }, []);
 
   return (
     <ThemeContext.Provider
