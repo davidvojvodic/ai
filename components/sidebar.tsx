@@ -49,22 +49,25 @@ const routes = [
     color: "text-green-700",
   },
   {
-    label: "Restavriranje slik",
+    label: "Restavriranje slik (začasno onemogočeno)",
     icon: ImageIcon,
     href: "/image-restoration",
     color: "text-pink-500",
+    isEnabled: false, // disabled
   },
   {
-    label: "Ustvarjanje videa",
+    label: "Ustvarjanje videa (začasno onemogočeno)",
     icon: Film,
     href: "/video",
     color: "text-orange-700",
+    isEnabled: false, // disabled
   },
   {
-    label: "Ustvarjanje glasbe",
+    label: "Ustvarjanje glasbe (začasno onemogočeno)",
     icon: Music,
     href: "/music",
     color: "text-emerald-500",
+    isEnabled: false, // disabled
   },
 
   {
@@ -105,12 +108,14 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
           {/* Navigation links */}
           {routes.map((route) => (
             <Link
-              href={route.href}
+              href={route.isEnabled !== false ? route.href : ""} // DISABLE THE HREF IF NOT ENABLED
               key={route.href}
               className={cn(
                 "text-sm lg:text-md group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-black dark:hover:text-white hover:bg-[#f3f3fb] dark:hover:bg-white/10 rounded-lg transition",
                 pathname === route.href
                   ? "bg-[#f3f3fb] dark:bg-white/10 text-[#36bcba]"
+                  : route.isEnabled === false
+                  ? "cursor-not-allowed text-zinc-400" // MAKE CURSOR INDICATE IT IS NOT CLICKABLE
                   : "text-zinc-400"
               )}
             >

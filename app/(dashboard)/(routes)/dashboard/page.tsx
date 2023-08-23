@@ -6,14 +6,11 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Camera,
-  Code,
   Code2,
   Film,
   ImageIcon,
-  MessageSquare,
   MessagesSquare,
   Music,
-  VideoIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import TypewriterComponent from "typewriter-effect";
@@ -48,34 +45,6 @@ const tools = [
       "Prikaži sproščujoč prizor ob obali z valovi.",
     ],
   },
-  // Tool 3: Ustvarjanje videa
-  {
-    label: "Ustvarjanje videa",
-    icon: Film,
-    color: "text-orange-700",
-    bgColor: "bg-orange-700/10",
-    href: "/video",
-    options: [
-      "Ustvari video potovanja skozi gosto tropsko džunglo.",
-      "Prikaži sekvenco sončnega zahoda nad mirnim oceanom. ",
-      "Izdelaj animacijo starega mesta s prebivalci in vozovi. ",
-      "Ustvari video množice ptic, ki vzletijo s polja. ",
-    ],
-  },
-  // Tool 4: Ustvarjanje glasbe
-  {
-    label: "Ustvarjanje glasbe",
-    icon: Music,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-    href: "/music",
-    options: [
-      "Oblikuj zvočno kuliso za sproščujoč večer ob kaminu.",
-      "Oblikuj melodijo, ki bi jo lahko igrali na kmečkem praznovanju. ",
-      "Izdelaj glasbeni motiv, ki prikliče občutek jadranja po mirnem jezeru. ",
-      "Predstavljaj si glasbeno ozadje za hitro vožnjo skozi mesto ponoči.",
-    ],
-  },
   // Tool 5: Ustvarjanje kode
   {
     label: "Ustvarjanje kode",
@@ -90,12 +59,44 @@ const tools = [
       "Izdelaj skripto, ki omogoča uporabnikom, da ocenjujejo in komentirajo objave.",
     ],
   },
+  // Tool 3: Ustvarjanje videa
+  {
+    label: "Ustvarjanje videa",
+    icon: Film,
+    color: "text-orange-700",
+    bgColor: "bg-orange-700/10",
+    href: "/video",
+    options: [
+      "Ustvari video potovanja skozi gosto tropsko džunglo.",
+      "Prikaži sekvenco sončnega zahoda nad mirnim oceanom. ",
+      "Izdelaj animacijo starega mesta s prebivalci in vozovi. ",
+      "Ustvari video množice ptic, ki vzletijo s polja. ",
+    ],
+    isEnabled: false, // New field to indicate if this tool is enabled
+  },
+  // Tool 4: Ustvarjanje glasbe
+  {
+    label: "Ustvarjanje glasbe",
+    icon: Music,
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+    href: "/music",
+    options: [
+      "Oblikuj zvočno kuliso za sproščujoč večer ob kaminu.",
+      "Oblikuj melodijo, ki bi jo lahko igrali na kmečkem praznovanju. ",
+      "Izdelaj glasbeni motiv, ki prikliče občutek jadranja po mirnem jezeru. ",
+      "Predstavljaj si glasbeno ozadje za hitro vožnjo skozi mesto ponoči.",
+    ],
+    isEnabled: false, // New field to indicate if this tool is enabled
+  },
+
   {
     label: "Restavriranje slik",
     icon: ImageIcon,
     href: "/image-restoration",
     color: "text-pink-500",
     bgColor: "bg-pink-500/10",
+    isEnabled: false, // New field to indicate if this tool is enabled
   },
 ];
 
@@ -119,9 +120,18 @@ export default function DashboardPage() {
         {tools.map((tool) => (
           <Card
             // On click, navigate to the corresponding href
-            onClick={() => router.push(tool.href)}
+            onClick={(e) => {
+              if (tool.isEnabled !== false) {
+                router.push(tool.href);
+              } else {
+                e.preventDefault();
+              }
+            }}
             key={tool.href}
-            className="p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-white text-black dark:bg-[#1a1f1f] dark:text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out cursor-pointer"
+            className={cn(
+              "p-4 w-56 h-[240px] 2xl:w-72 2xl:h-[300px] border-2 border-[#2f3838] bg-white text-black dark:bg-[#1a1f1f] dark:text-white flex flex-col items-start hover:shadow-[7px_7px_0px_0px_#2f3838] transition duration-300 ease-in-out",
+              tool.isEnabled === false ? "cursor-not-allowed" : "cursor-pointer"
+            )}
           >
             <div className="flex items-center justify-between w-full gap-x-4">
               <div className="flex items-center">

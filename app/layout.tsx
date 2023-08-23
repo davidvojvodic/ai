@@ -39,7 +39,7 @@ export default function RootLayout({
       {/* Set the language of the document to "en" */}
       <html lang="en">
         {/* Initialize the CrispProvider to enable Crisp chat */}
-        <CrispProvider />
+        {/* <CrispProvider />  */}
 
         {/* Set the body class name to include "h-screen" and the className from the Inter font */}
         <body className={cn("max-h-screen", inter.className)}>
@@ -49,7 +49,7 @@ export default function RootLayout({
 
             {/* Wrap the content with ToasterProvider to handle toast notifications */}
             <ToasterProvider />
-            <ThemeSwitch />
+            {/* <ThemeSwitch /> */}
             {/* Render the children (main content) */}
             {children}
           </ThemeContextProvider>
