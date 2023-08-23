@@ -58,46 +58,47 @@ const tools = [
       "Prikaži vzorec kode za animacijo gumbov ob prehodu miške.",
       "Izdelaj skripto, ki omogoča uporabnikom, da ocenjujejo in komentirajo objave.",
     ],
+    isEnabled: true,
   },
   // Tool 3: Ustvarjanje videa
-  {
-    label: "Ustvarjanje videa",
-    icon: Film,
-    color: "text-orange-700",
-    bgColor: "bg-orange-700/10",
-    href: "/video",
-    options: [
-      "Ustvari video potovanja skozi gosto tropsko džunglo.",
-      "Prikaži sekvenco sončnega zahoda nad mirnim oceanom. ",
-      "Izdelaj animacijo starega mesta s prebivalci in vozovi. ",
-      "Ustvari video množice ptic, ki vzletijo s polja. ",
-    ],
-    isEnabled: false, // New field to indicate if this tool is enabled
-  },
-  // Tool 4: Ustvarjanje glasbe
-  {
-    label: "Ustvarjanje glasbe",
-    icon: Music,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-    href: "/music",
-    options: [
-      "Oblikuj zvočno kuliso za sproščujoč večer ob kaminu.",
-      "Oblikuj melodijo, ki bi jo lahko igrali na kmečkem praznovanju. ",
-      "Izdelaj glasbeni motiv, ki prikliče občutek jadranja po mirnem jezeru. ",
-      "Predstavljaj si glasbeno ozadje za hitro vožnjo skozi mesto ponoči.",
-    ],
-    isEnabled: false, // New field to indicate if this tool is enabled
-  },
+  // {
+  //   label: "Ustvarjanje videa",
+  //   icon: Film,
+  //   color: "text-orange-700",
+  //   bgColor: "bg-orange-700/10",
+  //   href: "/video",
+  //   options: [
+  //     "Ustvari video potovanja skozi gosto tropsko džunglo.",
+  //     "Prikaži sekvenco sončnega zahoda nad mirnim oceanom. ",
+  //     "Izdelaj animacijo starega mesta s prebivalci in vozovi. ",
+  //     "Ustvari video množice ptic, ki vzletijo s polja. ",
+  //   ],
+  //   isEnabled: false, // New field to indicate if this tool is enabled
+  // },
+  // // Tool 4: Ustvarjanje glasbe
+  // {
+  //   label: "Ustvarjanje glasbe",
+  //   icon: Music,
+  //   color: "text-emerald-500",
+  //   bgColor: "bg-emerald-500/10",
+  //   href: "/music",
+  //   options: [
+  //     "Oblikuj zvočno kuliso za sproščujoč večer ob kaminu.",
+  //     "Oblikuj melodijo, ki bi jo lahko igrali na kmečkem praznovanju. ",
+  //     "Izdelaj glasbeni motiv, ki prikliče občutek jadranja po mirnem jezeru. ",
+  //     "Predstavljaj si glasbeno ozadje za hitro vožnjo skozi mesto ponoči.",
+  //   ],
+  //   isEnabled: false, // New field to indicate if this tool is enabled
+  // },
 
-  {
-    label: "Restavriranje slik",
-    icon: ImageIcon,
-    href: "/image-restoration",
-    color: "text-pink-500",
-    bgColor: "bg-pink-500/10",
-    isEnabled: false, // New field to indicate if this tool is enabled
-  },
+  // {
+  //   label: "Restavriranje slik",
+  //   icon: ImageIcon,
+  //   href: "/image-restoration",
+  //   color: "text-pink-500",
+  //   bgColor: "bg-pink-500/10",
+  //   isEnabled: false, // New field to indicate if this tool is enabled
+  // },
 ];
 
 export default function DashboardPage() {
