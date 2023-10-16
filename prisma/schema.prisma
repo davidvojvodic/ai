@@ -10,6 +10,14 @@ datasource db {
   relationMode = "prisma" // Set the relation mode to "prisma".
 }
 
+model User {
+  id    String @id @unique
+  email String @unique
+
+  File    File[]
+  Message Message[]
+}
+
 // Define the data model for the "UserApiLimit" table in the database.
 model UserApiLimit {
   id        String   @id @default(cuid()) // Define the "id" field as the primary key with a default value generated using cuid().
@@ -27,4 +35,46 @@ model UserSubscription {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id") // Define the "stripeSubscriptionId" field as an optional string with an optional unique constraint and mapped to the database column "stripe_subscription_id".
   stripePriceId          String?   @map(name: "stripe_price_id") // Define the "stripePriceId" field as an optional string mapped to the database column "stripe_price_id".
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end") // Define the "stripeCurrentPeriodEnd" field as an optional DateTime mapped to the database column "stripe_current_period_end".
+}
+
+enum UploadStatus {
+  PENDING
+  PROCESSING
+  FAILED
+  SUCCESS
+}
+
+model File {
+  id   String @id @default(uuid())
+  name String
+
+  uploadStatus UploadStatus @default(PENDING)
+
+  url      String
+  key      String
+  messages Message[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@index([userId])
+}
+
+model Message {
+  id   String @id @default(cuid())
+  text String @db.Text()
+
+  isUserMessage Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  File      File?    @relation(fields: [fileId], references: [id])
+  fileId    String?
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@index([fileId])
+  @@index([userId])
 }
