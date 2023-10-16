@@ -16,6 +16,7 @@ import {
   Film,
   Code2,
   ImageIcon,
+  FileText,
 } from "lucide-react";
 import { FreeCounter } from "./free-counter";
 
@@ -49,26 +50,32 @@ const routes = [
     color: "text-green-700",
   },
   {
-    label: "Restavriranje slik (začasno onemogočeno)",
-    icon: ImageIcon,
-    href: "/image-restoration",
-    color: "text-pink-500",
-    isEnabled: false, // disabled
-  },
-  {
-    label: "Ustvarjanje videa (začasno onemogočeno)",
-    icon: Film,
-    href: "/video",
+    label: "PDF",
+    icon: FileText,
+    href: "/pdf",
     color: "text-orange-700",
-    isEnabled: false, // disabled
   },
-  {
-    label: "Ustvarjanje glasbe (začasno onemogočeno)",
-    icon: Music,
-    href: "/music",
-    color: "text-emerald-500",
-    isEnabled: false, // disabled
-  },
+  // {
+  //   label: "Restavriranje slik (začasno onemogočeno)",
+  //   icon: ImageIcon,
+  //   href: "/image-restoration",
+  //   color: "text-pink-500",
+  //   isEnabled: false, // disabled
+  // },
+  // {
+  //   label: "Ustvarjanje videa (začasno onemogočeno)",
+  //   icon: Film,
+  //   href: "/video",
+  //   color: "text-orange-700",
+  //   isEnabled: false, // disabled
+  // },
+  // {
+  //   label: "Ustvarjanje glasbe (začasno onemogočeno)",
+  //   icon: Music,
+  //   href: "/music",
+  //   color: "text-emerald-500",
+  //   isEnabled: false, // disabled
+  // },
 
   {
     label: "Nastavitve",

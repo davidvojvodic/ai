@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import Heading from "@/components/heading";
-import { MessageSquare, MessagesSquare } from "lucide-react";
+import { Copy, MessageSquare, MessagesSquare } from "lucide-react";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,6 +25,17 @@ const ConversationPage = () => {
   const proModal = useProModal();
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+
+  // const onCopy = () => {
+  //   if (!content) {
+  //     return;
+  //   }
+
+  //   navigator.clipboard.writeText(content);
+  //   toast({
+  //     description: "Message copied to clipboard",
+  //   });
+  // };
 
   // Initialize the form and validation using zod
   const form = useForm<z.infer<typeof formSchema>>({
@@ -139,6 +150,16 @@ const ConversationPage = () => {
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                 {/* Render the content of the message */}
                 <p className="text-sm">{message.content}</p>
+                {message.role !== "user" && !isLoading && (
+                  <Button
+                    onClick={() => {}}
+                    className="px-2 bg-slate-400"
+                    size="lg"
+                    variant="default"
+                  >
+                    <Copy />
+                  </Button>
+                )}
               </div>
             ))}
           </div>
