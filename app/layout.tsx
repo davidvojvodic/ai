@@ -17,6 +17,7 @@ import { CrispProvider } from "@/components/crisp-provider";
 import { cn } from "@/lib/utils";
 import ThemeContextProvider from "@/context/theme-context";
 import ThemeSwitch from "@/components/theme-switch";
+import { Providers } from "./providers";
 
 // Create an instance of the Inter font with "latin" subset
 const inter = Inter({ subsets: ["latin"] });
@@ -43,16 +44,18 @@ export default function RootLayout({
 
         {/* Set the body class name to include "h-screen" and the className from the Inter font */}
         <body className={cn("max-h-screen", inter.className)}>
-          <ThemeContextProvider>
-            {/* Wrap the content with ModalProvider to handle modals */}
-            <ModalProvider />
+          <Providers>
+            <ThemeContextProvider>
+              {/* Wrap the content with ModalProvider to handle modals */}
+              <ModalProvider />
 
-            {/* Wrap the content with ToasterProvider to handle toast notifications */}
-            <ToasterProvider />
-            {/* <ThemeSwitch /> */}
-            {/* Render the children (main content) */}
-            {children}
-          </ThemeContextProvider>
+              {/* Wrap the content with ToasterProvider to handle toast notifications */}
+              <ToasterProvider />
+              {/* <ThemeSwitch /> */}
+              {/* Render the children (main content) */}
+              {children}
+            </ThemeContextProvider>
+          </Providers>
         </body>
       </html>
     </ClerkProvider>

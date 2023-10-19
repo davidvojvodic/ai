@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import UploadButton from "@/components/upload-button";
 import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
-import { Ghost, Loader2, MessageSquare, Plus, Trash } from "lucide-react";
+import { format } from "date-fns";
+import { Ghost, MessageSquare, Plus, Trash } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const PDFPage = async () => {
   const { userId } = auth();
@@ -18,7 +18,7 @@ const PDFPage = async () => {
   return (
     <main className="mx-auto max-w-7xl md:p-10 ">
       <div className="mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
-        <h1 className="mb-3 font-bold text-5xl text-gray-900">My files</h1>
+        <h1 className="mb-3 font-bold text-5xl text-zinc-100">My files</h1>
 
         <UploadButton />
       </div>
@@ -63,16 +63,12 @@ const PDFPage = async () => {
                   </div>
 
                   <Button
-                    onClick={() => deleteFile({ id: file.id })}
+                    onClick={() => {}}
                     variant="destructive"
                     size="sm"
                     className="w-full"
                   >
-                    {currentlyDeleteingFile === file.id ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Trash className="h-4 w-4" />
-                    )}
+                    <Trash className="h-4 w-4" />
                   </Button>
                 </div>
               </li>
