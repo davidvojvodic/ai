@@ -1,31 +1,26 @@
 "use client";
 
 // Import necessary modules
-import Link from "next/link";
-import Image from "next/image";
 import { Montserrat } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import {
-  Music,
-  Settings,
-  Home,
-  MessagesSquare,
-  Camera,
-  Film,
-  Code2,
-  ImageIcon,
-  FileText,
-  MenuIcon,
-  Cross,
   ArrowLeftToLine,
+  Camera,
+  Code2,
+  FileText,
+  Home,
+  MenuIcon,
+  MessagesSquare,
+  Settings,
 } from "lucide-react";
-import { FreeCounter } from "./free-counter";
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { CircularProgress } from "@nextui-org/react";
 import CollapsedFreeCounter from "./collapsed-free-counter";
+import { FreeCounter } from "./free-counter";
+import { Button } from "./ui/button";
 
 // Define the Montserrat font with specific weight and subsets
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });

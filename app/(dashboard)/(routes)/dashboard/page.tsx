@@ -106,7 +106,7 @@ export default function DashboardPage() {
   const router = useRouter();
 
   return (
-    <div className="h-fit bg-[#f4f4f6] dark:bg-[#060e0e] pb-10">
+    <div className="h-fit w-full bg-[#f4f4f6] dark:bg-[#060e0e] pb-10">
       <div className="mb-8 px-10 space-y-4">
         {/* Heading and description */}
         <h2 className="text-2xl text-black dark:text-white md:text-4xl font-bold">

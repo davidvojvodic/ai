@@ -21,7 +21,7 @@ const buttonVariants = cva(
         premium:
           "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-0",
         menu: "bg-gradient-to-r from-[#e2ea46] via-[#f65606] to-[#36bcba] text-white border-0",
-        novi: "bg-gradient-to-r from-[#00ffeb] via-[#36bcba] to-[#4161b0] text-white border-0",
+        novi: "bg-gradient-to-r from-[#00ffeb] via-[#36bcba] to-[#4161b0] text-white border-0 hover:opacity-70 transition",
       },
       size: {
         default: "h-10 px-4 py-2",
