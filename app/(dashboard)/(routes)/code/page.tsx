@@ -139,7 +139,7 @@ const CodePage = () => {
                 className={cn(
                   "p-8 w-full flex items-center mt-3 gap-8 rounded-lg",
                   message.role === "user"
-                    ? "bg-white border border-black/10"
+                    ? "bg-white text-black border border-black/10"
                     : "bg-muted"
                 )}
               >
