@@ -43,7 +43,7 @@ export default function RootLayout({
         {/* <CrispProvider />  */}
 
         {/* Set the body class name to include "h-screen" and the className from the Inter font */}
-        <body className={cn("max-h-screen", inter.className)}>
+        <body className={cn(inter.className)}>
           <Providers>
             <ThemeContextProvider>
               {/* Wrap the content with ModalProvider to handle modals */}

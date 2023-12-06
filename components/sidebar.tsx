@@ -101,14 +101,14 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
     // Sidebar container with navigation links and logo
     <div
       className={cn(
-        "space-y-4 p-3 xl:p-5 border-r-2 rounded-r-3xl border-[#2f3838] flex flex-col h-full bg-[#ffffff] dark:bg-[#1a1f1f] text-[#b2b2b2] dark:text-white",
+        "space-y-4 p-3 xl:p-5 border-r-2 border-[#2f3838] flex flex-col h-full bg-[#ffffff] dark:bg-[#1a1f1f] text-[#b2b2b2] dark:text-white",
         isSidebarOpen ? "" : "w-24 items-center"
       )}
     >
       <Button
         variant="novi"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={cn("p-2 w-10 h-10", isSidebarOpen ? "ml-3" : "")}
+        className={cn("p-2 w-8 h-8", isSidebarOpen ? "ml-3" : "")}
       >
         {isSidebarOpen ? (
           <ArrowLeftToLine className="w-6 h-6 " />
